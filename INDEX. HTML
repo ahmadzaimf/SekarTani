@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="siteTitleTag">TaniMaju Elite - Premium Agriculture Market & Logistics</title>
+    <style>
+        /* --- SUPER PREMIUM ULTRA LUXURY THEME --- */
+        :root {
+            --bg-deep-emerald: #061a10; 
+            --luxury-gold: #dfba6b; 
+            --gold-hover: #f3d693;
+            --pure-white: #ffffff;
+            --soft-white: #f4f7f5;
+            --luxury-black: #111613;
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            --gold-shadow: 0 4px 20px rgba(223, 186, 107, 0.15);
+            --up-green: #2ecc71;
+            --down-red: #e74c3c;
+            --info-blue: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-white);
+            color: var(--luxury-black);
+            line-height: 1.7;
+        }
+
+        /* --- NAVIGASI STABIL & RESPONSIF --- */
+        nav {
+            background-color: var(--bg-deep-emerald);
+            border-bottom: 2px solid var(--luxury-gold);
+            color: var(--pure-white);
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--luxury-gold);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: var(--luxury-gold);
+            text-shadow: 0 0 10px rgba(223, 186, 107, 0.5);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(6, 26, 16, 0.75), rgba(6, 26, 16, 0.92)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--pure-white);
+            padding: 0 2rem;
+            border-bottom: 3px solid var(--luxury-gold);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: #e2e8f0;
+            letter-spacing: 1px;
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--bg-deep-emerald);
+            font-size: 2.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 90px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+            display: block;
+            margin: 1rem auto 0;
+        }
+
+        /* --- SECURE ADMIN PANEL CONTROL --- */
+        .admin-panel {
+            background: var(--pure-white);
+            padding: 4rem;
+            margin-bottom: 5rem;
+            border: 2px solid var(--luxury-gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            display: none; 
+            animation: slideDown 0.5s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-panel h2 {
+            color: var(--bg-deep-emerald);
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--luxury-gold);
+            padding-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .admin-section {
+            background: #fafbfa;
+            border: 1px solid #eef2ef;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .admin-section h3 {
+            color: var(--bg-deep-emerald);
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            border-left: 4px solid var(--luxury-gold);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-row-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--bg-deep-emerald);
+            letter-spacing: 1px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            font-size: 1rem;
+            background-color: var(--pure-white);
+            color: var(--luxury-black);
+        }
+
+        .btn-luxury-submit {
+            background-color: var(--bg-deep-emerald);
+            color: var(--pure-white);
+            border: 1px solid var(--luxury-gold);
+            padding: 1.1rem 2.5rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        .btn-luxury-submit:hover {
+            background-color: var(--luxury-gold);
+            color: var(--bg-deep-emerald);
+            box-shadow: var(--gold-shadow);
+        }
+
+        /* List Kategori di Admin */
+        .category-item {
+            display: inline-flex;
+            align-items: center;
+            background: #eef2ef;
+            border: 1px solid var(--luxury-gold);
+            padding: 0.4rem 1rem;
+            margin: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .category-item span {
+            margin-left: 15px;
+            color: #a52a2a;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Container Preview Multi-Foto */
+        .multi-preview-container {
+            margin-top: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+        }
+        .multi-preview-item {
+            width: 110px;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid var(--luxury-gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* --- GRID DOKUMENTASI KEGIATAN --- */
+        .grid-dokumentasi {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .card {
+            background: var(--pure-white);
+            border: 1px solid rgba(223, 186, 107, 0.15);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(6, 26, 16, 0.08);
+            border-color: var(--luxury-gold);
+        }
+
+        /* AREA KLIK DETAIL */
+        .card-clickable-area {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex-grow: 1;
+        }
+
+        /* --- ADVANCED IMAGE SLIDER COMPONENT --- */
+        .slider-container {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(6, 26, 16, 0.7);
+            color: var(--luxury-gold);
+            border: 1px solid var(--luxury-gold);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        .slider-btn:hover {
+            background: var(--luxury-gold);
+            color: var(--bg-deep-emerald);
+        }
+        .slider-btn.prev { left: 10px; }
+        .slider-btn.next { right: 10px; }
+
+        .card-content {
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-tag {
+            align-self: flex-start;
+            border: 1px solid var(--luxury-gold);
+            color: #b59243;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            background-color: rgba(223, 186, 107, 0.05);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+            color: var(--bg-deep-emerald);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
+
+        .card-description {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more-indicator {
+            color: var(--luxury-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .admin-actions {
+            padding: 1.2rem 2.2rem;
+            border-top: 1px dashed #e74c3c;
+            display: none; 
+            background: #fffdfd;
+        }
+        .btn-delete {
+            background: #a52a2a;
+            color: var(--pure-white);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* --- DATA BOX BLOCKS --- */
+        .data-box {
+            background: linear-gradient(135deg, var(--bg-deep-emerald), #020b07);
+            color: var(--pure-white);
+            padding: 4.5rem 3.5rem;
+            border: 1px solid var(--luxury-gold);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            margin-bottom: 5rem;
+        }
+
+        .data-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--luxury-gold);
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .data-box-subtitle {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .luxury-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .luxury-table th {
+            background-color: rgba(223, 186, 107, 0.1);
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 2px solid var(--luxury-gold);
+        }
+
+        .luxury-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(223, 186, 107, 0.15);
+            color: #e2e8f0;
+        }
+
+        /* LIVE FEEDS */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(46, 204, 113, 0.15);
+            color: var(--up-green);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--up-green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1.4s infinite ease-in-out both;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .badge-status { font-weight: 700; font-size: 0.85rem; }
+        .badge-up { color: var(--up-green); }
+        .badge-down { color: var(--down-red); }
+        .badge-subsidi {
+            background: linear-gradient(135deg, #b59243, #dfba6b);
+            color: var(--bg-deep-emerald);
+            padding: 0.2rem 0.6rem;
+            font-weight: 800;
+            font-size: 0.75rem;
+        }
+        .badge-non-subsidi {
+            border: 1px solid #718096;
+            color: #cbd5e1;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+        }
+
+        .stok-bar-container {
+            width: 120px;
+            background: rgba(255,255,255,0.1);
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .stok-bar { height: 100%; background: var(--luxury-gold); }
+
+        /* ================= MODAL WINDOWS (COMMON DESIGN) ================= */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(6, 26, 16, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            padding: 1rem;
+        }
+        .modal-content {
+            background: var(--pure-white);
+            padding: 3.5rem;
+            width: 100%;
+            max-width: 460px;
+            border-top: 6px solid var(--luxury-gold);
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            animation: modalFade 0.3s ease-out;
+        }
+
+        /* JENDELA POP-UP DETAIL BERITA / INFO LEBIH BESAR & MEWAH */
+        .news-modal-content {
+            max-width: 800px;
+            text-align: left;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-top: 6px solid var(--luxury-gold);
+            background: var(--pure-white);
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            animation: modalFade 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-content h3 {
+            margin-bottom: 2rem;
+            color: var(--bg-deep-emerald);
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .secret-admin-gate {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px dashed #2d3748;
+            padding: 0.3rem 0.8rem;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .secret-admin-gate:hover {
+            color: var(--luxury-gold);
+            border-color: var(--luxury-gold);
+            background-color: rgba(223,186,107,0.05);
+        }
+
+        /* --- DETAIL BERITA STYLING --- */
+        .news-modal-title {
+            font-size: 2rem;
+            color: var(--bg-deep-emerald);
+            font-weight: 700;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .news-modal-body-text {
+            color: #2d3748;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            white-space: pre-wrap; /* Mempertahankan spasi dan enter deskripsi asli */
+        }
+        .news-modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+        .news-modal-gallery img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border: 1px solid rgba(223, 186, 107, 0.3);
+        }
+
+        /* --- FOOTER REGION --- */
+        footer {
+            background-color: #030d08;
+            color: #94a3b8;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 2px solid var(--luxury-gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVE LOGIC --- */
+        @media (max-width: 992px) {
+            nav { padding: 1.2rem 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--bg-deep-emerald);
+                border-bottom: 2px solid var(--luxury-gold);
+                padding: 1rem 0;
+                box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            }
+            nav ul.active { display: flex; }
+            nav ul li { width: 100%; text-align: center; }
+            nav ul li a { display: block; padding: 1rem 0; width: 100%; border-bottom: 1px solid rgba(223, 186, 107, 0.05); }
+            nav ul li:last-child a { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .grid-dokumentasi { grid-template-columns: 1fr; }
+            .data-box { padding: 3rem 1.5rem; }
+            .form-row-split { grid-template-columns: 1fr; }
+            .news-modal-content { padding: 2rem 1.5rem; }
+            .news-modal-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <div class="logo" id="siteLogoDisplay">🌾 TaniMaju Elite</div>
+        
+        <button class="menu-toggle" id="mobileMenuBtn" onclick="toggleNavMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul id="navLinks">
+            <li><a href="#" onclick="tutupNavOtomatis()">Beranda</a></li>
+            <li><a href="#dokumentasi" onclick="tutupNavOtomatis()">Dokumentasi</a></li>
+            <li><a href="#komoditas" onclick="tutupNavOtomatis()">Harga Komoditas</a></li>
+            <li><a href="#pupuk" onclick="tutupNavOtomatis()">Logistik &amp; Harga Pupuk</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <h1 id="heroTitleDisplay">The Luxury of Sustainable Agriculture</h1>
+        <p>Arsip dokumentasi eksklusif, bursa indeks harga pangan nasional, serta pemantauan logistik ritel pupuk secara real-time.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ================= PANEL INPUT & CONTROL ADMIN ================= -->
+        <section id="adminPanel" class="admin-panel">
+            <h2>🛠️ ELITE CONTROL PANEL & BRANDING SYSTEM</h2>
+            
+            <!-- MENU 1: EDIT SECURITY KREDENSIAL (USERNAME & PASSWORD) -->
+            <div class="admin-section">
+                <h3>🔒 Pengaturan Kredensial Akses Log Admin</h3>
+                <div class="form-row-split">
+                    <div class="form-group">
+                        <label>Username Admin Baru</label>
+                        <input type="text" id="inputNewUsername" value="admin">
+                    </div>
+                    <div class="form-group">
+                        <label>Password Admin Baru</label>
+                        <input type="password" id="inputNewPassword" value="123">
+                    </div>
+                </div>
+                <button type="button" class="btn-luxury-submit" style="padding: 0.8rem 2rem;" onclick="simpanKredensialBaru()">💾 Simpan Kredensial Baru</button>
+            </div>
+
+            <!-- MENU 2: EDIT JUDUL DINDING WEB & IDENTITAS -->
+            <div class="admin-section">
+                <h3>⚙_ Pengaturan Identitas & Judul Dinding Web</h3>
+                <div class="form-group">
+                    <label style="color: #b59243; font-weight: 800;">📝 Judul di Dinding Web (Hero Headline Banner)</label>
+                    <input type="text" id="inputJudulDinding" value="The Luxury of Sustainable Agriculture" placeholder="Ketikkan headline dinding web utama disini...">
+                </div>
+                <div class="form-row-split">
+                    <div class="form-group">
+                        <label>Nama / Judul Sistem Website</label>
+                        <input type="text" id="inputNamaWeb" value="TaniMaju Elite">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Pembuat Website (Creator Name)</label>
+                        <input type="text" id="inputNamaCreator" value="Developer Kelompok Tani">
+                    </div>
+                </div>
+                <button type="button" class="btn-luxury-submit" style="padding: 0.8rem 2rem;" onclick="updateIdentitasWebsite()">💾 Terapkan Seluruh Perubahan Teks</button>
+            </div>
+
+            <!-- MENU 3: MANAJEMEN EDIT KATEGORI BEBAS -->
+            <div class="admin-section">
+                <h3>🏷️ Manajemen Kategori Kegiatan Bebas</h3>
+                <div class="form-group" style="max-width: 500px;">
+                    <label>Tambah Kategori Baru</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="inputKategoriBaru" placeholder="Contoh: Pengolahan Limbah Hijau">
+                        <button type="button" class="btn-luxury-submit" style="padding: 0 1.5rem; margin: 0;" onclick="tambahKategoriBebas()">+ Tambah</button>
+                    </div>
+                </div>
+                <label style="display:block; font-weight:700; font-size:0.85rem; text-transform:uppercase; color:var(--bg-deep-emerald); margin-bottom:0.6rem;">Daftar Kategori Saat Ini (Klik tanda X untuk menghapus):</label>
+                <div id="wrapperDaftarKategori">
+                    <!-- Diisi otomatis via JavaScript -->
+                </div>
+            </div>
+
+            <!-- MENU 4: UPLOAD KEGIATAN BARU -->
+            <div class="admin-section">
+                <h3>📝 Laporan Dokumentasi Kegiatan Baru</h3>
+                <form id="formKegiatan" onsubmit="adminTambahKegiatan(event)">
+                    <div class="form-group">
+                        <label>Judul Kegiatan Komoditas</label>
+                        <input type="text" id="judul" placeholder="Contoh: Penanaman Varietas Unggul..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori Kegiatan</label>
+                        <select id="kategori">
+                            <!-- Opsi akan dirender otomatis dari array kategori -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Penanggung Jawab / Petani</label>
+                        <input type="text" id="petani" placeholder="Nama lengkap..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pilih File Foto Kegiatan (Bisa pilih banyak foto sekaligus)</label>
+                        <input type="file" id="inputFotoFile" accept="image/*" onchange="previewMultiImages(this)" multiple required>
+                        <div class="multi-preview-container" id="multiPreviewContainer"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Deskripsi Laporan Teknis Lapangan (Penjelasan Lengkap)</label>
+                        <textarea id="deskripsi" rows="6" placeholder="Detail penanganan lapangan secara menyeluruh..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-luxury-submit">🚀 Simpan &amp; Publikasikan Postingan</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- ================= SECTION DOKUMENTASI KEGIATAN ================= -->
+        <section id="dokumentasi">
+            <h2 class="section-title">Dokumentasi Kegiatan Masterpiece</h2>
+            <div class="grid-dokumentasi" id="wadahKegiatan">
+                
+                <!-- Card 1 -->
+                <div class="card" id="card-1">
+                    <div class="card-clickable-area" onclick="bukaDetailBerita('card-1')">
+                        <div class="slider-container" onclick="event.stopPropagation();">
+                            <button class="slider-btn prev" onclick="geserSliderStatic('card-1', -1)">&#10094;</button>
+                            <button class="slider-btn next" onclick="geserSliderStatic('card-1', 1)">&#10095;</button>
+                            <div class="slider-wrapper" id="slider-wrapper-card-1" data-current="0" data-max="0">
+                                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3" alt="Padi">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag" id="tag-card-1">Pembibitan &amp; Kultivasi</span>
+                            <h3 class="card-title" id="title-card-1">Kultivasi Padi Organik Premium Black Heritage</h3>
+                            <p class="card-meta" id="meta-card-1">Oleh: Royal Agri Group • Terverifikasi</p>
+                            <p class="card-description" id="desc-card-1">Implementasi metode penanaman hidro-organik eksklusif dengan presisi nutrisi mineral tinggi di kawasan lahan blok VVIP untuk menghasilkan padi hitam premium berdaya jual tinggi.</p>
+                            <div class="read-more-indicator">Lihat Penjelasan Lengkap &rarr;</div>
+                        </div>
+                    </div>
+                    <div class="admin-actions" id="action-card-1">
+                        <button class="btn-delete" onclick="hapusKegiatan('card-1')">Hapus Postingan</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" id="card-2">
+                    <div class="card-clickable-area" onclick="bukaDetailBerita('card-2')">
+                        <div class="slider-container" onclick="event.stopPropagation();">
+                            <button class="slider-btn prev" onclick="geserSliderStatic('card-2', -1)">&#10094;</button>
+                            <button class="slider-btn next" onclick="geserSliderStatic('card-2', 1)">&#10095;</button>
+                            <div class="slider-wrapper" id="slider-wrapper-card-2" data-current="0" data-max="0">
+                                <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3" alt="Jagung">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag" id="tag-card-2">Masa Panen Raya</span>
+                            <h3 class="card-title" id="title-card-2">Panen Komoditas Jagung Sweet-Gold Grade A</h3>
+                            <p class="card-meta" id="meta-card-2">Oleh: Estate Manager Sukarman • Terverifikasi</p>
+                            <p class="card-description" id="desc-card-2">Pencapaian rekor volume panen raya kualitas ekspor dengan sistem sortir otomatis bebas residu kimia di seluruh sektor klaster barat pertanian utama.</p>
+                            <div class="read-more-indicator">Lihat Penjelasan Lengkap &rarr;</div>
+                        </div>
+                    </div>
+                    <div class="admin-actions" id="action-card-2">
+                        <button class="btn-delete" onclick="hapusKegiatan('card-2')">Hapus Postingan</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= INDEKS BURSA HARGA KOMODITAS ================= -->
+        <section id="komoditas">
+            <div class="data-box">
+                <div style="text-align: center;">
+                    <div class="live-indicator"><span class="live-dot"></span>Bursa Live Feed Komoditas</div>
+                </div>
+                <h2>Bursa Harga Komoditas Pertanian</h2>
+                <p class="data-box-subtitle">Informasi indeks nilai jual komoditas agrikultur kualitas pangan utama tingkat pasar induk &amp; pasar ekspor secara berkala.</p>
+                
+                <div class="table-responsive">
+                    <table class="luxury-table">
+                        <thead>
+                            <tr>
+                                <th>Jenis Komoditas</th>
+                                <th>Kualitas / Grade</th>
+                                <th>Satuan</th>
+                                <th>Harga Pasar (IDR)</th>
+                                <th>Tren Terakhir</th>
+                            </tr>
+                        </thead>
+                        <tbody id="commodityTableBody">
+                            <tr style="background-color: rgba(223, 186, 107, 0.04);">
+                                <td><strong style="color: var(--luxury-gold);">🌾 Gabah Kering Giling (GKG)</strong></td>
+                                <td>Premium Super Varietas</td>
+                                <td>Per Kg</td>
+                                <td id="price-gabah-gkg" style="font-weight: 700;">Rp 7.850</td>
+                                <td class="badge-status badge-up" id="trend-gabah-gkg">▲ +1.4%</td>
+                            </tr>
+                            <tr style="background-color: rgba(223, 186, 107, 0.02);">
+                                <td><strong style="color: var(--luxury-gold);">🌾 Gabah Kering Panen (GKP)</strong></td>
+                                <td>Standar Sawah Lokasi</td>
+                                <td>Per Kg</td>
+                                <td id="price-gabah-gkp" style="font-weight: 700;">Rp 6.600</td>
+                                <td class="badge-status badge-up" id="trend-gabah-gkp">▲ +0.9%</td>
+                            </tr>
+                            <tr style="background-color: rgba(52, 152, 219, 0.04);">
+                                <td><strong style="color: #63b3ed;">🌽 Jagung Pipil Kering (KA 14%)</strong></td>
+                                <td>Kualitas Pakan Grade A</td>
+                                <td>Per Kg</td>
+                                <td id="price-jagung-kering" style="font-weight: 700;">Rp 5.950</td>
+                                <td class="badge-status badge-up" id="trend-jagung-kering">▲ +2.3%</td>
+                            </tr>
+                            <tr style="background-color: rgba(52, 152, 219, 0.02);">
+                                <td><strong style="color: #63b3ed;">🌽 Jagung Manis Sweet-Gold</strong></td>
+                                <td>Grade A Konsumsi Ekspor</td>
+                                <td>Per Kg</td>
+                                <td id="price-jagung-manis" style="font-weight: 700;">Rp 8.200</td>
+                                <td class="badge-status badge-up" id="trend-jagung-manis">▲ +0.8%</td>
+                            </tr>
+                            <tr>
+                                <td>Padi Organik Black Heritage</td>
+                                <td>Super VVIP Premium</td>
+                                <td>Per Kg</td>
+                                <td id="price-padi">Rp 24.500</td>
+                                <td class="badge-status badge-up" id="trend-padi">▲ +2.1%</td>
+                            </tr>
+                            <tr>
+                                <td>Cabai Rawit Merah Premium</td>
+                                <td>Grade A High-Purity</td>
+                                <td>Per Kg</td>
+                                <td id="price-cabai">Rp 68.000</td>
+                                <td class="badge-status badge-down" id="trend-cabai">▼ -1.5%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MONITORING LOGISTIK PUPUK ================= -->
+        <section id="pupuk">
+            <div class="data-box">
+                <div style="text-align: center;">
+                    <div class="live-indicator" style="background: rgba(52, 152, 219, 0.15); color: var(--info-blue); border-color: rgba(52, 152, 219, 0.3);">
+                        <span class="live-dot" style="background-color: var(--info-blue);"></span>Data Ritel Logistik Publik
+                    </div>
+                </div>
+                <h2>Monitoring Logistik &amp; Harga Pupuk</h2>
+                <p class="data-box-subtitle">Daftar harga resmi e-RDKK pupuk bersubsidi pemerintah dan ketersediaan alokasi stok fisik di gudang ritel lini IV secara presisi.</p>
+                
+                <div class="table-responsive">
+                    <table class="luxury-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Formulasi Pupuk</th>
+                                <th>Kategori Sistem</th>
+                                <th>Kemasan Bag</th>
+                                <th>Harga Eceran Tertinggi (HET)</th>
+                                <th>Ketersediaan / Real Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fertilizerTableBody">
+                            <tr>
+                                <td><strong>Urea (Nitrogen 46%)</strong></td>
+                                <td><span class="badge-status badge-subsidi">PUPUK SUBSIDI</span></td>
+                                <td>Sak 50 Kg</td>
+                                <td style="color: var(--luxury-gold); font-weight: 600;">Rp 112.500</td>
+                                <td>
+                                    <span style="color: var(--up-green); font-weight: 600;">84.250 Ton (Aman)</span>
+                                    <div class="stok-bar-container"><div class="stok-bar" style="width: 85%;"></div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>NPK Phonska (15-15-15)</strong></td>
+                                <td><span class="badge-status badge-subsidi">PUPUK SUBSIDI</span></td>
+                                <td>Sak 50 Kg</td>
+                                <td style="color: var(--luxury-gold); font-weight: 600;">Rp 115.000</td>
+                                <td>
+                                    <span style="color: var(--up-green); font-weight: 600;">61.100 Ton (Aman)</span>
+                                    <div class="stok-bar-container"><div class="stok-bar" style="width: 65%;"></div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urea Prill Non-Subsidi Pro</strong></td>
+                                <td><span class="badge-status badge-non-subsidi">Komersil Swasta</span></td>
+                                <td>Sak 50 Kg</td>
+                                <td id="fertilizer-urea-non">Rp 535.000</td>
+                                <td>
+                                    <span style="color: var(--up-green); font-weight: 600;">145.000 Ton (Melimpah)</span>
+                                    <div class="stok-bar-container"><div class="stok-bar" style="width: 95%;"></div></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ================= MODAL EXCLUSIVE EXPLORER (DETAIL BERITA) ================= -->
+    <div id="detailBeritaModal" class="modal">
+        <div class="news-modal-content">
+            <button class="btn-luxury-submit" style="position: absolute; top: 20px; right: 20px; padding: 0.4rem 1rem; margin: 0;" onclick="tutupDetailBerita()">Tutup ×</button>
+            <div id="detailModalTag" class="card-tag" style="margin-top: 1rem;">KATEGORI</div>
+            <h2 id="detailModalTitle" class="news-modal-title">Judul Kegiatan Pertanian Premium</h2>
+            <p id="detailModalMeta" style="color: #718096; font-style: italic; font-size: 0.9rem; margin-bottom: 1.5rem;">Oleh: Nama Petani</p>
+            <hr style="border: 0; border-top: 1px solid rgba(223, 186, 107, 0.3); margin-bottom: 1.5rem;">
+            
+            <div id="detailModalGallery" class="news-modal-gallery">
+                <!-- Foto-foto diproduksi dinamis via JS -->
+            </div>
+
+            <p id="detailModalDescription" class="news-modal-body-text">Detail penjelasan lengkap kegiatan lapangan...</p>
+        </div>
+    </div>
+
+    <!-- ================= MODAL LOGIN ADMIN ================= -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h3>LOG IN ADMIN ELITE</h3>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Masukkan username admin...">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Masukkan password rahasia...">
+            </div>
+            <button class="btn-luxury-submit" style="width: 100%;" onclick="prosesLoginAdmin()">MASUK SISTEM KENDALI</button>
+            <p style="margin-top: 1.5rem;"><a style="color: #718096; font-size: 0.85rem; cursor: pointer; text-decoration: underline;" onclick="tutupModalLogin()">Batal</a></p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; 2026 <span id="footerSiteName">TaniMaju Elite</span>. Crafted by <strong id="footerCreatorName" style="color: var(--luxury-gold);">Developer Kelompok Tani</strong>.
+            <a class="secret-admin-gate" id="gateText" onclick="bukaModalLogin()">Akses Sistem</a>
+        </p>
+    </footer>
+
+    <!-- INTERAKSI LOGIC SYSTEMS -->
+    <script>
+        // Kredensial Otentikasi Dinamis (Bisa diubah bebas)
+        let adminUsernameSistem = "admin";
+        let adminPasswordSistem = "123";
+
+        let statusAdminLoggedIn = false;
+        let counterId = 3; 
+        let arrayBase64Foto = []; 
+
+        // Repositori Data Memory Lokal untuk Laporan Berita Lengkap
+        let databaseLaporanLengkap = {
+            "card-1": {
+                kategori: "Pembibitan & Kultivasi",
+                judul: "Kultivasi Padi Organik Premium Black Heritage",
+                meta: "Oleh: Royal Agri Group • Terverifikasi",
+                deskripsi: "Implementasi metode penanaman hidro-organik eksklusif dengan presisi nutrisi mineral tinggi di kawasan lahan blok VVIP untuk menghasilkan padi hitam premium berdaya jual tinggi.\n\nSistem monitoring kelembaban terintegrasi penuh mengalirkan air beraerasi kaya ozon setiap 4 jam. Tahapan inkubasi benih dilakukan di laboratorium terkontrol suhu 24°C untuk menjamin kekuatan kecambah hingga 99.8%. Proyek komoditas ekspor andalan perkumpulan tani tingkat tinggi ini ditargetkan menyuplai pasar premium internasional.",
+                foto: ["https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3"]
+            },
+            "card-2": {
+                kategori: "Masa Panen Raya",
+                judul: "Panen Komoditas Jagung Sweet-Gold Grade A",
+                meta: "Oleh: Estate Manager Sukarman • Terverifikasi",
+                deskripsi: "Pencapaian rekor volume panen raya kualitas ekspor dengan sistem sortir otomatis bebas residu kimia di seluruh sektor klaster barat pertanian utama.\n\nHasil panen musim ini mencatatkan kenaikan tonase sebesar 18.4% dibanding tahun lalu. Penanganan pasca-panen langsung ditangani unit mesin pengering vertikal mekanis (Vertical Dryer) guna mengunci kadar air tepat di angka 14% dalam waktu kurang dari 12 jam, mencegah kontaminasi jamur aflatoksin secara sempurna.",
+                foto: ["https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3"]
+            }
+        };
+
+        // Data Awal Kategori Kegiatan Dinamis (Bisa diedit secara bebas)
+        let daftarKategoriGlobal = [
+            "Pembibitan & Kultivasi",
+            "Masa Panen Raya",
+            "Analisis Struktur Tanah",
+            "Sistem Irigasi Otomatis"
+        ];
+
+        window.onload = function() {
+            renderKategoriKeSistem();
+        };
+
+        // --- KONTROL NAVIGASI HAMBURGER ---
+        function toggleNavMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        }
+
+        function tutupNavOtomatis() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if(navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
+        }
+
+        // --- SISTEM JENDELA DETAIL BERITA (MODAL POP-UP) ---
+        function bukaDetailBerita(idCard) {
+            const dataItem = databaseLaporanLengkap[idCard];
+            if(!dataItem) return;
+
+            document.getElementById('detailModalTag').innerText = dataItem.kategori;
+            document.getElementById('detailModalTitle').innerText = dataItem.judul;
+            document.getElementById('detailModalMeta').innerText = dataItem.meta;
+            document.getElementById('detailModalDescription').innerText = dataItem.deskripsi;
+
+            // Render Galeri Multi-Foto di dalam modal penjelasan lengkap
+            const wadahGaleri = document.getElementById('detailModalGallery');
+            wadahGaleri.innerHTML = "";
+            dataItem.foto.forEach(srcFoto => {
+                const imgNode = document.createElement('img');
+                imgNode.src = srcFoto;
+                imgNode.alt = "Dokumentasi Lapangan";
+                wadahGaleri.appendChild(imgNode);
+            });
+
+            document.getElementById('detailBeritaModal').style.display = 'flex';
+        }
+
+        function tutupDetailBerita() {
+            document.getElementById('detailBeritaModal').style.display = 'none';
+        }
+
+        // --- STATIC SLIDER NAVIGATION FOR INITIAL CARDS ---
+        function geserSliderStatic(cardId, arah) {
+            const wrapper = document.getElementById('slider-wrapper-' + cardId);
+            let current = parseInt(wrapper.getAttribute('data-current') || 0);
+            let max = parseInt(wrapper.getAttribute('data-max') || 0);
+
+            current += arah;
+            if(current < 0) current = max;
+            if(current > max) current = 0;
+
+            wrapper.setAttribute('data-current', current);
+            wrapper.style.transform = `translateX(-${current * 100}%)`;
+        }
+
+        // --- SISTEM LOGIN & UTILITY ADMIN ---
+        function bukaModalLogin() {
+            if(statusAdminLoggedIn) {
+                statusAdminLoggedIn = false;
+                document.getElementById('adminPanel').style.display = 'none';
+                document.getElementById('gateText').innerText = "Akses Sistem";
+                alert("Anda telah aman keluar dari Sistem Log Admin.");
+                toggleAksiHapusCard(false);
+            } else {
+                document.getElementById('loginModal').style.display = 'flex';
+            }
+        }
+
+        function tutupModalLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+        }
+
+        function prosesLoginAdmin() {
+            const userIn = document.getElementById('username').value;
+            const passIn = document.getElementById('password').value;
+
+            if (userIn === adminUsernameSistem && passIn === adminPasswordSistem) {
+                statusAdminLoggedIn = true;
+                alert("Verifikasi Berhasil! Seluruh menu kendali elite kini terbuka.");
+                tutupModalLogin();
+                
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('gateText').innerText = "Keluar Admin (X)";
+                
+                toggleAksiHapusCard(true);
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Akses Ditolak! Username atau password salah.");
+            }
+        }
+
+        function simpanKredensialBaru() {
+            const userBaru = document.getElementById('inputNewUsername').value;
+            const passBaru = document.getElementById('inputNewPassword').value;
+
+            if(userBaru.trim() === "" || passBaru.trim() === "") {
+                alert("Kredensial baru tidak boleh kosong!");
+                return;
+            }
+
+            adminUsernameSistem = userBaru;
+            adminPasswordSistem = passBaru;
+            alert("Sukses! Kredensial login admin baru berhasil disimpan ke sistem.");
+        }
+
+        function updateIdentitasWebsite() {
+            const judulDindingBaru = document.getElementById('inputJudulDinding').value;
+            const namaWebBaru = document.getElementById('inputNamaWeb').value;
+            const namaCreatorBaru = document.getElementById('inputNamaCreator').value;
+
+            if(judulDindingBaru.trim() === "" || namaWebBaru.trim() === "" || namaCreatorBaru.trim() === "") {
+                alert("Input tidak boleh ada yang kosong!");
+                return;
+            }
+
+            document.getElementById('heroTitleDisplay').innerText = judulDindingBaru;
+            document.getElementById('siteTitleTag').innerText = namaWebBaru + " - Premium Agriculture Market & Logistics";
+            document.getElementById('siteLogoDisplay').innerText = "🌾 " + namaWebBaru;
+            document.getElementById('footerSiteName').innerText = namaWebBaru;
+            document.getElementById('footerCreatorName').innerText = namaCreatorBaru;
+
+            alert("Seluruh konfigurasi Judul Dinding & Identitas sukses diperbarui!");
+        }
+
+        // --- MANAGEMENT KATEGORI BEBAS (DINAMIS) ---
+        function renderKategoriKeSistem() {
+            const wrapperList = document.getElementById('wrapperDaftarKategori');
+            const dropdownSelect = document.getElementById('kategori');
+
+            wrapperList.innerHTML = "";
+            daftarKategoriGlobal.forEach((kat, indeks) => {
+                wrapperList.innerHTML += `
+                    <div class="category-item">
+                        ${kat} <span onclick="hapusKategoriBebas(${indeks})">X</span>
+                    </div>
+                `;
+            });
+
+            dropdownSelect.innerHTML = "";
+            daftarKategoriGlobal.forEach(kat => {
+                dropdownSelect.innerHTML += `<option value="${kat}">${kat}</option>`;
+            });
+        }
+
+        function tambahKategoriBebas() {
+            const nilaiInput = document.getElementById('inputKategoriBaru').value;
+            if(nilaiInput.trim() === "") {
+                alert("Ketikkan nama kategori terlebih dahulu!");
+                return;
+            }
+
+            daftarKategoriGlobal.push(nilaiInput.trim());
+            document.getElementById('inputKategoriBaru').value = "";
+            renderKategoriKeSistem();
+            alert("Kategori baru berhasil ditambahkan!");
+        }
+
+        function htmlEscape(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function hapusKategoriBebas(indeks) {
+            if(daftarKategoriGlobal.length <= 1) {
+                alert("Harus menyisakan minimal 1 kategori dalam sistem!");
+                return;
+            }
+            if(confirm(`Hapus kategori "${daftarKategoriGlobal[indeks]}" dari sistem?`)) {
+                daftarKategoriGlobal.splice(indeks, 1);
+                renderKategoriKeSistem();
+            }
+        }
+
+        // --- MANAJEMEN MULTI-UPLOAD FOTO KEGIATAN ---
+        function previewMultiImages(input) {
+            const container = document.getElementById('multiPreviewContainer');
+            container.innerHTML = ""; 
+            arrayBase64Foto = []; 
+
+            if (input.files && input.files.length > 0) {
+                Array.from(input.files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        arrayBase64Foto.push(e.target.result);
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList.add('multi-preview-item');
+                        container.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+
+        function toggleAksiHapusCard(show) {
+            const actions = document.querySelectorAll('.admin-actions');
+            actions.forEach(item => {
+                item.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        // --- SISTEM TAMBAH KEGIATAN DENGAN EXPLORER DETAIL ---
+        function adminTambahKegiatan(event) {
+            event.preventDefault();
+            const judul = document.getElementById('judul').value;
+            const kategori = document.getElementById('kategori').value;
+            const petani = document.getElementById('petani').value;
+            const deskripsi = document.getElementById('deskripsi').value;
+            
+            if(arrayBase64Foto.length === 0) {
+                alert("Silakan unggah setidaknya 1 foto kegiatan!");
+                return;
+            }
+
+            const uniqueId = 'card-' + counterId;
+            
+            // Simpan data lengkap ke database lokal agar bisa dipanggil saat diklik
+            databaseLaporanLengkap[uniqueId] = {
+                kategori: kategori,
+                judul: judul,
+                meta: `Oleh: ${petani} • Baru Saja`,
+                deskripsi: deskripsi,
+                foto: [...arrayBase64Foto]
+            };
+
+            let imagesHtml = "";
+            arrayBase64Foto.forEach(base64Src => {
+                imagesHtml += `<img src="${base64Src}">`;
+            });
+
+            let sliderControlsHtml = "";
+            if (arrayBase64Foto.length > 1) {
+                sliderControlsHtml = `
+                    <button class="slider-btn prev" onclick="event.stopPropagation(); geserSlider('${uniqueId}', -1)">&#10094;</button>
+                    <button class="slider-btn next" onclick="event.stopPropagation(); geserSlider('${uniqueId}', 1)">&#10095;</button>
+                `;
+            }
+
+            const cardTemplate = `
+                <div class="card" id="${uniqueId}" data-current-index="0" data-max-index="${arrayBase64Foto.length - 1}">
+                    <div class="card-clickable-area" onclick="bukaDetailBerita('${uniqueId}')">
+                        <div class="slider-container" onclick="event.stopPropagation();">
+                            ${sliderControlsHtml}
+                            <div class="slider-wrapper" id="wrapper-${uniqueId}">
+                                ${imagesHtml}
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">${htmlEscape(kategori)}</span>
+                            <h3 class="card-title">${htmlEscape(judul)}</h3>
+                            <p class="card-meta">Oleh: ${htmlEscape(petani)} • Baru Saja</p>
+                            <p class="card-description">${htmlEscape(deskripsi)}</p>
+                            <div class="read-more-indicator">Lihat Penjelasan Lengkap &rarr;</div>
+                        </div>
+                    </div>
+                    <div class="admin-actions" style="display: block;">
+                        <button class="btn-delete" onclick="hapusKegiatan('${uniqueId}')">Hapus Postingan</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('wadahKegiatan').insertAdjacentHTML('afterbegin', cardTemplate);
+            
+            document.getElementById('formKegiatan').reset();
+            document.getElementById('multiPreviewContainer').innerHTML = "";
+            arrayBase64Foto = [];
+            counterId++;
+            alert('Sukses mempublikasikan laporan kegiatan baru dengan penjelasan lengkap!');
+        }
+
+        function geserSlider(cardId, arah) {
+            const cardEl = document.getElementById(cardId);
+            const wrapper = document.getElementById('wrapper-' + cardId);
+            
+            let currentIndex = parseInt(cardEl.getAttribute('data-current-index'));
+            const maxIndex = parseInt(cardEl.getAttribute('data-max-index'));
+
+            currentIndex += arah;
+
+            if (currentIndex < 0) {
+                currentIndex = maxIndex;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = 0;
+            }
+
+            cardEl.setAttribute('data-current-index', currentIndex);
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function hapusKegiatan(idCard) {
+            if(confirm("Hapus arsip ini dari publik?")) {
+                document.getElementById(idCard).remove();
+                delete databaseLaporanLengkap[idCard];
+            }
+        }
+
+        // Fluktuasi indeks bursa harga berkala (Tiap 4 detik)
+        setInterval(() => {
+            const gabahGkgRandom = 7700 + Math.floor(Math.random() * 300);
+            const gabahGkpRandom = 6450 + Math.floor(Math.random() * 300);
+            if(document.getElementById('price-gabah-gkg')) {
+                document.getElementById('price-gabah-gkg').innerText = "Rp " + gabahGkgRandom.toLocaleString('id-ID');
+                document.getElementById('price-gabah-gkp').innerText = "Rp " + gabahGkpRandom.toLocaleString('id-ID');
+            }
+
+            const jagungKeringRandom = 5800 + Math.floor(Math.random() * 300);
+            const jagungManisRandom = 8000 + Math.floor(Math.random() * 400);
+            if(document.getElementById('price-jagung-kering')) {
+                document.getElementById('price-jagung-kering').innerText = "Rp " + jagungKeringRandom.toLocaleString('id-ID');
+                document.getElementById('price-jagung-manis').innerText = "Rp " + jagungManisRandom.toLocaleString('id-ID');
+            }
+
+            const ureaNonRandom = 531000 + Math.floor(Math.random() * 9000);
+            if(document.getElementById('fertilizer-urea-non')) {
+                document.getElementById('fertilizer-urea-non').innerText = "Rp " + ureaNonRandom.toLocaleString('id-ID');
+            }
+        }, 4000);
+    </script>
+</body>
+</html>
